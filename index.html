@@ -1,28 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
-        <title>Tic Tac Toe</title>
-    </head>
 
-    <body>
-        <div class="gameContainer">
-            <h1>Tic Tac Toe</h1>
-            <div id="gameBoard">
-                <div cellIndex="0" class="cell"></div>
-                <div cellIndex="1" class="cell"></div>
-                <div cellIndex="2" class="cell"></div>
-                <div cellIndex="3" class="cell"></div>
-                <div cellIndex="4" class="cell"></div>
-                <div cellIndex="5" class="cell"></div>
-                <div cellIndex="6" class="cell"></div>
-                <div cellIndex="7" class="cell"></div>
-                <div cellIndex="8" class="cell"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=array@400,600,700&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <title>Ultimate Tic Tac Toe</title>
+</head>
+
+<body>
+    <div class="gameContainer">
+        <div class="panel">
+            <div class="titleBox">
+                <h1>Ultimate Tic Tac Toe</h1>
             </div>
-            <h2 id="gameStatus"></h2>
-            <button id="restartButton">Restart</button>
+            <div class="modeBox">
+                <button id="modeAi" class="modeButton active">vs AI</button>
+                <button id="modeTwo" class="modeButton">2 Players</button>
+            </div>
+            <div class="statusBox">
+                <h2 id="gameStatus"></h2>
+            </div>
+            <div class="restartBox">
+                <button id="restartButton">Restart</button>
+            </div>
         </div>
-        <script src="./script.js"></script>
-    </body>
+        <div class="boardPanel">
+            <div id="gameBoard">
+                <div boardIndex="0" class="miniBoard">
+                    <div cellIndex="0" class="cell"></div>
+                    <div cellIndex="1" class="cell"></div>
+                    <div cellIndex="2" class="cell"></div>
+                    <div cellIndex="3" class="cell"></div>
+                    <div cellIndex="4" class="cell"></div>
+                    <div cellIndex="5" class="cell"></div>
+                    <div cellIndex="6" class="cell"></div>
+                    <div cellIndex="7" class="cell"></div>
+                    <div cellIndex="8" class="cell"></div>
+                </div>
+                <div boardIndex="1" class="miniBoard">
+                    <div cellIndex="0" class="cell"></div>
+                    <div cellIndex="1" class="cell"></div>
+                    <div cellIndex="2" class="cell"></div>
+                    <div cellIndex="3" class="cell"></div>
+                    <div cellIndex="4" class="cell"></div>
+                    <div cellIndex="5" class="cell"></div>
+                    <div cellIndex="6" class="cell"></div>
+                    <div cellIndex="7" class="cell"></div>
+                    <div cellIndex="8" class="cell"></div>
+                </div>
+                <div boardIndex="2" class="miniBoard">
+                    <div cellIndex="0" class="cell"></div>
+                    <div cellIndex="1" class="cell"></div>
+                    <div cellIndex="2" class="cell"></div>
+                    <div cellIndex="3" class="cell"></div>
+                    <div cellIndex="4" class="cell"></div>
+                    <div cellIndex="5" class="cell"></div>
+                    <div cellIndex="6" class="cell"></div>
+                    <div cellIndex="7" class="cell"></div>
+                    <div cellIndex="8" class="cell"></div>
+                </div>
+                <div boardIndex="3" class="miniBoard">
+                    <div cellIndex="0" class="cell"></div>
+                    <div cellIndex="1" class="cell"></div>
+                    <div cellIndex="2" class="cell"></div>
+                    <div cellIndex="3" class="cell"></div>
+                    <div cellIndex="4" class="cell"></div>
+                    <div cellIndex="5" class="cell"></div>
+                    <div cellIndex="6" class="cell"></div>
+                    <div cellIndex="7" class="cell"></div>
+                    <div cellIndex="8" class="cell"></div>
+                </div>
+                <div boardIndex="4" class="miniBoard">
+                    <div cellIndex="0" class="cell"></div>
+                    <div cellIndex="1" class="cell"></div>
+                    <div cellIndex="2" class="cell"></div>
+                    <div cellIndex="3" class="cell"></div>
+                    <div cellIndex="4" class="cell"></div>
+                    <div cellIndex="5" class="cell"></div>
+                    <div cellIndex="6" class="cell"></div>
+                    <div cellIndex="7" class="cell"></div>
+                    <div cellIndex="8" class="cell"></div>
+                </div>
+                <div boardIndex="5" class="miniBoard">
+                    <div cellIndex="0" class="cell"></div>
+                    <div cellIndex="1" class="cell"></div>
+                    <div cellIndex="2" class="cell"></div>
+                    <div cellIndex="3" class="cell"></div>
+                    <div cellIndex="4" class="cell"></div>
+                    <div cellIndex="5" class="cell"></div>
+                    <div cellIndex="6" class="cell"></div>
+                    <div cellIndex="7" class="cell"></div>
+                    <div cellIndex="8" class="cell"></div>
+                </div>
+                <div boardIndex="6" class="miniBoard">
+                    <div cellIndex="0" class="cell"></div>
+                    <div cellIndex="1" class="cell"></div>
+                    <div cellIndex="2" class="cell"></div>
+                    <div cellIndex="3" class="cell"></div>
+                    <div cellIndex="4" class="cell"></div>
+                    <div cellIndex="5" class="cell"></div>
+                    <div cellIndex="6" class="cell"></div>
+                    <div cellIndex="7" class="cell"></div>
+                    <div cellIndex="8" class="cell"></div>
+                </div>
+                <div boardIndex="7" class="miniBoard">
+                    <div cellIndex="0" class="cell"></div>
+                    <div cellIndex="1" class="cell"></div>
+                    <div cellIndex="2" class="cell"></div>
+                    <div cellIndex="3" class="cell"></div>
+                    <div cellIndex="4" class="cell"></div>
+                    <div cellIndex="5" class="cell"></div>
+                    <div cellIndex="6" class="cell"></div>
+                    <div cellIndex="7" class="cell"></div>
+                    <div cellIndex="8" class="cell"></div>
+                </div>
+                <div boardIndex="8" class="miniBoard">
+                    <div cellIndex="0" class="cell"></div>
+                    <div cellIndex="1" class="cell"></div>
+                    <div cellIndex="2" class="cell"></div>
+                    <div cellIndex="3" class="cell"></div>
+                    <div cellIndex="4" class="cell"></div>
+                    <div cellIndex="5" class="cell"></div>
+                    <div cellIndex="6" class="cell"></div>
+                    <div cellIndex="7" class="cell"></div>
+                    <div cellIndex="8" class="cell"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
 </html>

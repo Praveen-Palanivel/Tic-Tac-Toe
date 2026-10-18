@@ -1,26 +1,206 @@
+:root {
+    --bg: #0f0f11;
+    --yellow: #F5B800;
+    --white: #F3F4F6;
+    --line: #27272a;
+    --cell: min(52px, 9vw);
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
+    margin: 0;
+    min-height: 100vh;
     display: grid;
     place-items: center;
-    height: 100vh;
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Array', sans-serif;
 }
 
 .gameContainer {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(24px, 5vw, 64px);
+    padding: 24px;
 }
 
-.cell {
-    width: 100px;
-    height: 100px;
-    border: 2px solid;
-    box-shadow: 0 0 0 2px;
-    line-height: 100px;
-    font-size: 70px;
-    cursor: pointer;   
+.panel {
+    width: 260px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--yellow);
+}
+
+.titleBox,
+.modeBox,
+.statusBox,
+.restartBox {
+    margin-bottom: 32px;
+}
+
+.modeBox {
+    display: flex;
+    gap: 8px;
+}
+
+.restartBox {
+    margin-bottom: 0;
+}
+
+.modeButton,
+#restartButton {
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 16px;
+    background: var(--bg);
+    color: var(--white);
+    border: 2px solid var(--line);
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.08s ease;
+}
+
+.modeButton:hover:not(.active),
+#restartButton:hover {
+    border-color: var(--white);
+}
+
+.modeButton:active,
+#restartButton:active {
+    transform: scale(0.97);
+}
+
+.modeButton.active {
+    background: var(--yellow);
+    border-color: var(--yellow);
+    color: var(--bg);
+}
+
+#restartButton {
+    background: var(--white);
+    border-color: var(--white);
+    color: var(--bg);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--yellow);
+    outline-offset: 2px;
+}
+
+#gameStatus {
+    min-height: 32px;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
 }
 
 #gameBoard {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(3, auto);
-    width: 310px;
-    margin: auto;
+}
+
+.miniBoard {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, var(--cell));
+    padding: 10px;
+    border-right: 4px solid var(--line);
+    border-bottom: 4px solid var(--line);
+}
+
+.miniBoard:nth-child(3n) {
+    border-right: 0;
+}
+
+.miniBoard:nth-child(n+7) {
+    border-bottom: 0;
+}
+
+.cell {
+    width: var(--cell);
+    height: var(--cell);
+    display: grid;
+    place-items: center;
+    font-size: calc(var(--cell) * 0.6);
+    font-weight: 700;
+    border-right: 2px solid var(--line);
+    border-bottom: 2px solid var(--line);
+}
+
+.cell:nth-child(3n) {
+    border-right: 0;
+}
+
+.cell:nth-child(n+7) {
+    border-bottom: 0;
+}
+
+.cell.x {
+    color: var(--yellow);
+}
+
+.cell.o {
+    color: var(--white);
+}
+
+#gameBoard.free .miniBoard {
+    border-color: var(--yellow);
+}
+
+.miniBoard.active .cell {
+    border-color: var(--yellow);
+}
+
+.miniBoard.playable .cell:empty {
+    cursor: pointer;
+}
+
+.miniBoard.playable .cell:empty:hover {
+    background: var(--line);
+}
+
+.miniBoard.drawn .cell {
+    opacity: 0.35;
+}
+
+.miniBoard.wonX::after,
+.miniBoard.wonO::after {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: var(--bg);
+    font-size: calc(var(--cell) * 2.4);
+    font-weight: 700;
+}
+
+.miniBoard.wonX::after {
+    content: "X";
+    color: var(--yellow);
+}
+
+.miniBoard.wonO::after {
+    content: "O";
+    color: var(--white);
+}
+
+.miniBoard.winning.wonX::after {
+    background: var(--yellow);
+    color: var(--bg);
+}
+
+.miniBoard.winning.wonO::after {
+    background: var(--white);
+    color: var(--bg);
 }
